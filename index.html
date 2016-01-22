@@ -147,16 +147,25 @@
                                     </a>
                                 </td>
                                 <td>
+                                    <a href="" ng-click="sortType = 'actualSeason'; sortReverse = !sortReverse">
+                                        <b>latest Season</b>
+                                        <span ng-show="sortType == 'score' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'score' && sortReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </td>
+
+                                <td>
                                     <a href="" ng-click="sortType = 'trees'; sortReverse = !sortReverse">
 
-                                        <center><img class="img-responsive" src="img/tree.png" alt=""></center>
+                                        <b>Trees</b>
                                         <span ng-show="sortType == 'trees' && !sortReverse" class="fa fa-caret-down"></span>
                                         <span ng-show="sortType == 'trees' && sortReverse" class="fa fa-caret-up"></span>
                                     </a>
                                 </td>
+
                                 <td>
                                     <a href="" ng-click="sortType = 'score'; sortReverse = !sortReverse">
-                                        <b>Score</b>
+                                        <b>Total Score</b>
                                         <span ng-show="sortType == 'score' && !sortReverse" class="fa fa-caret-down"></span>
                                         <span ng-show="sortType == 'score' && sortReverse" class="fa fa-caret-up"></span>
                                     </a>
@@ -168,7 +177,13 @@
                             <tr ng-repeat="user in scoreList | orderBy:sortType:sortReverse | filter:searchUser">
                                 <td><b>{{ user.rank }}.</b></td>
                                 <td><div class="username">{{ user.username }}</div></td>
-                                <td>{{ user.trees }}</td>
+                                <td>{{ user.actualSeason }}</td>
+                                <td>
+                                    <center>
+                                    <div><table><tr><td> {{ user.trees+"  " }}</td><td><img class="img-responsive" src="img/tree.png" alt=""></td></tr></table></div>
+                                    </center>
+                                </td>
+
                                 <td><div class="scoreValue">{{ user.score }}</div></td>
                             </tr>
                             </tbody>
