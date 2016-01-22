@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "start": "http-server -a 0.0.0.0 -p 8000"
+    "start": "http-server -a 0.0.0.0 -p 8010"
   },
   "devDependencies": {
     "http-server": "^0.6.1"
