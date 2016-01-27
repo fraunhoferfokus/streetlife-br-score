@@ -485,22 +485,22 @@ footer .footer-below {
 
 @media (max-width: 623px) {
     .score {
-        font-size: 8px;
+        font-size: 11px;
     }
 }
 @media (min-width: 724px) {
     .score {
-        font-size: 9px;
+        font-size: 12px;
     }
 }
 @media (min-width: 702px) {
     .score {
-        font-size: 10px;
+        font-size: 14px;
     }
 }
 @media (min-width: 780px) {
     .score {
-        font-size: 11px;
+        font-size: 16px;
     }
 }
 @media (min-width: 858px) {
