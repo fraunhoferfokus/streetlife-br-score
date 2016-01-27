@@ -477,13 +477,40 @@ footer .footer-below {
     background-color: transparent;
 }
 
-.score
-{
-    color: black;
-    font-size: 2em;
-}
 
 .username
 {
     color:#4D9BC1;
+}
+
+@media (max-width: 623px) {
+    .score {
+        font-size: 8px;
+    }
+}
+@media (min-width: 724px) {
+    .score {
+        font-size: 9px;
+    }
+}
+@media (min-width: 702px) {
+    .score {
+        font-size: 10px;
+    }
+}
+@media (min-width: 780px) {
+    .score {
+        font-size: 11px;
+    }
+}
+@media (min-width: 858px) {
+    .score {
+        font-size: 2em;
+    }
+}
+
+.score
+{
+    color: black;
+
 }
