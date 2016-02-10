@@ -123,7 +123,7 @@ window.fbAsyncInit = function() {
 
     console.log("facebook sdk loaded");
     FB.init({
-        appId      : '744933982303950',
+        appId      : '839436826179628',
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page
