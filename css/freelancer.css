@@ -355,6 +355,13 @@ footer .footer-below {
     padding: 25px 0;
     background-color: #808080;
 }
+footer .facebook {
+    padding: 8px 0;
+    background-color: #808080;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
 
 .btn-social {
     display: inline-block;
@@ -513,4 +520,12 @@ footer .footer-below {
 {
     color: black;
 
+}
+#analysis
+{
+
+}
+#loggedIn
+{
+    display: none;
 }

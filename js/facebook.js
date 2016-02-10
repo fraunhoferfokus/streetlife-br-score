@@ -12,6 +12,59 @@ $( document ).ready(function() {
 });
 
 
+
+function successfullyConnected(response)
+{
+    testAPI();
+    console.log(response.authResponse.accessToken);
+    $('#accessToken').html(response.authResponse.accessToken);
+    FB.api(
+        '/me/likes',
+        'GET',
+        {},
+        function(response) {
+
+
+            console.log("Likes");
+            console.log(response);
+        }
+    );
+
+    FB.api(
+        '/me/events',
+        'GET',
+        {},
+        function(response) {
+            // Insert your code here
+
+            console.log("Events");
+            console.log(response);
+        }
+    );
+
+    FB.api(
+        '/me',
+        'GET',
+        {"fields":"birthday,location,hometown,gender,picture,name"},
+        function(response) {
+            // Insert your code here
+
+            console.log("Basic Information");
+            console.log(response);
+            $('#welcome').css("display","none");
+            $('#loggedIn').css("display","inline");
+            var name = response.name.split(" ")[0];
+
+           $('#loggedInText').prepend("<center><p>Hallo "+name+",<br> Deine Facebookdaten wurden anonymisiert an die Streetlife Plattform weitergeleitet.</center>");
+
+        }
+    );
+}
+
+
+
+
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -22,62 +75,16 @@ function statusChangeCallback(response) {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        testAPI();
-        console.log(response.authResponse.accessToken);
-        $('#accessToken').html(response.authResponse.accessToken);
-        FB.api(
-            '/me/likes',
-            'GET',
-            {},
-            function(response) {
-
-                $('#likes').html(JSON.stringify(response));
-                console.log("Likes");
-                console.log(response);
-            }
-        );
-
-        FB.api(
-            '/me/events',
-            'GET',
-            {},
-            function(response) {
-                // Insert your code here
-                $('#events').html(JSON.stringify(response));
-                console.log("Events");
-                console.log(response);
-            }
-        );
-
-        FB.api(
-            '/me',
-            'GET',
-            {"fields":"birthday,location,hometown,gender,picture"},
-            function(response) {
-                // Insert your code here
-                $('#basic').html(JSON.stringify(response));
-                console.log("Basic Information");
-                console.log(response);
-            }
-        );
+     successfullyConnected(response);
 
 
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into this app.';
+
     } else {
         // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into Facebook.';
+         // they are logged into this app or not.
 
-
-        /*
-         TODO:perform automatic
-         FB.login(function(response) {
-         // handle the response
-         }, {scope: 'public_profile,email,user_likes,user_events,user_birthday,user_location'}); */
 
 
     }
