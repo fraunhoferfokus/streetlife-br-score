@@ -11,41 +11,54 @@ $( document ).ready(function() {
    // checkLoginState();
 });
 
+var FACEBOOK_APP_ID = '927583730682087';
+var shortTermAccessToken;
+var deviceId;
 
 
-function successfullyConnected(response)
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+}
+
+
+    function successfullyConnected(response)
 {
     testAPI();
+    console.log("short term access token");
     console.log(response.authResponse.accessToken);
-    $('#accessToken').html(response.authResponse.accessToken);
-    FB.api(
-        '/me/likes',
-        'GET',
-        {},
-        function(response) {
 
+    console.log(response);
+    shortTermAccessToken = response.authResponse.accessToken;
+    deviceId = getQueryVariable("deviceId");
+    userId = response.authResponse.userID;
 
-            console.log("Likes");
-            console.log(response);
-        }
-    );
+    console.log("DATA");
+    console.log("userId");
+    console.log(userId);
+    console.log("short term");
+    console.log(shortTermAccessToken);
+    console.log("deviceId");
+    console.log(deviceId);
 
-    FB.api(
-        '/me/events',
-        'GET',
-        {},
-        function(response) {
-            // Insert your code here
-
-            console.log("Events");
-            console.log(response);
+    $.get(
+        "http://10.147.67.75:8080/api-rest/facebook/saveaccesstoken",
+        {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
+        function(data) {
+            alert('page content: ' + data);
         }
     );
 
     FB.api(
         '/me',
         'GET',
-        {"fields":"birthday,location,hometown,gender,picture,name"},
+        {"fields":"name"},
         function(response) {
             // Insert your code here
 
@@ -59,6 +72,9 @@ function successfullyConnected(response)
 
         }
     );
+
+
+
 }
 
 
@@ -123,7 +139,7 @@ window.fbAsyncInit = function() {
 
     console.log("facebook sdk loaded");
     FB.init({
-        appId      : '839436826179628',
+        appId      : FACEBOOK_APP_ID,
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page

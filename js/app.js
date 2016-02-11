@@ -4,23 +4,30 @@
 
 angular.module('scoreApp', [])
 
-    .controller('mainController', function($scope) {
+    .controller('mainController', function($scope,$http) {
         $scope.sortType     = 'rank'; // set the default sort type
         $scope.sortReverse  = false;  // set the default sort order
         $scope.searchUser   = '';     // set the default search/filter term
 
 
+        var scoreWebserviceUrl = "http://193.175.133.251/scores/getall";
 
-        // create the list of sushi rolls
-        $scope.scoreList = [
-            { username: 'carsten', trees: 11, score: 120,actualSeason:40,rank:1 },
-            { username: 'manuel', trees: 7, score: 105,actualSeason:52,rank:2 },
-            { username: 'ben', trees: 5, score: 95,actualSeason:32,rank:3 },
-            { username: 'bjoern', trees: 4, score: 83,actualSeason:44,rank:4 },
-            { username: 'silke', trees: 3, score: 56,actualSeason:20,rank:5},
-            { username: 'florian', trees: 0, score: 7,actualSeason:7,rank:6 }
+        $http.get(scoreWebserviceUrl)
+            .then(function(response) {
+               console.log(response.data);
+                $scope.scoreList =response.data;
 
-        ];
+                $scope.scoreList.sort(function(a, b) {
+                    return parseFloat(a.totalScore) - parseFloat(b.totalScore);
+                });
+
+                $scope.scoreList[12].currentSeasonScore = 565;
+                $scope.scoreList[13].currentSeasonScore = 67;
+
+
+        });
+
+
 
 
     });
