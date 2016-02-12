@@ -4,11 +4,7 @@
 
 
 $( document ).ready(function() {
-    // Handler for .ready() called.
 
-    console.log("facebook login flow");
-
-   // checkLoginState();
 });
 
 var FACEBOOK_APP_ID = '927583730682087';
@@ -29,23 +25,20 @@ function getQueryVariable(variable) {
 }
 
 
-    function successfullyConnected(response)
+function successfullyConnected(response)
 {
     testAPI();
-    console.log("short term access token");
-    console.log(response.authResponse.accessToken);
 
-    console.log(response);
     shortTermAccessToken = response.authResponse.accessToken;
     deviceId = getQueryVariable("deviceId");
     userId = response.authResponse.userID;
 
-    console.log("DATA");
-    console.log("userId");
+    console.log("the following data, will be send to Streetlife Backend");
+    console.log("userId:");
     console.log(userId);
-    console.log("short term");
+    console.log("fb short term access token:");
     console.log(shortTermAccessToken);
-    console.log("deviceId");
+    console.log("streetlife app deviceId: ");
     console.log(deviceId);
 
     $.get(
@@ -75,13 +68,7 @@ function getQueryVariable(variable) {
         }
     );
 
-
-
 }
-
-
-
-
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -108,25 +95,16 @@ function statusChangeCallback(response) {
     }
 }
 
-
 function startFacebookLoginProcess()
 {
     FB.login(function(response) {
 
-        console.log("whaats up");
-        console.log(response);
-
-
         if (response.authResponse) {
-     console.log("juhu");
             checkLoginState();
         }
 
     }, {scope: 'user_friends'});
 }
-
-
-
 
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample
@@ -139,7 +117,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
 
-    console.log("facebook sdk loaded");
+
     FB.init({
         appId      : FACEBOOK_APP_ID,
         cookie     : true,  // enable cookies to allow the server to access
@@ -168,7 +146,7 @@ window.fbAsyncInit = function() {
 
 // Load the SDK asynchronously
 (function(d, s, id) {
-    console.log("lala");
+
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
@@ -179,10 +157,7 @@ window.fbAsyncInit = function() {
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
 function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
+        console.log('FB Successful login for: ' + response.name);
     });
 }
