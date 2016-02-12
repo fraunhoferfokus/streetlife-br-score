@@ -8,7 +8,7 @@ $( document ).ready(function() {
 });
 
 var FACEBOOK_APP_ID = '927583730682087';
-var URL_BACKEND = "http://10.147.67.75:8080/api-rest/facebook/saveaccesstoken";
+var URL_BACKEND = "../fb/saveaccesstoken";
 var shortTermAccessToken;
 var deviceId;
 
