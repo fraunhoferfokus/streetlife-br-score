@@ -36,3 +36,17 @@ footer .footer-above {
     padding: 25px 0;
     background-color: white;
 }
+
+#streetlife-logo
+{
+    width: 204px;
+    height: 95px;
+}
+
+.fb-login-button
+{
+    position: relative;
+    left: 60px;
+}
+
+
