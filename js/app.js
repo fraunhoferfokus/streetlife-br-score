@@ -10,19 +10,23 @@ angular.module('scoreApp', [])
         $scope.searchUser   = '';     // set the default search/filter term
 
 
-        var scoreWebserviceUrl = "http://193.175.133.251/scores/getall";
+        var scoreWebserviceUrl = "../scores/getall";
 
         $http.get(scoreWebserviceUrl)
             .then(function(response) {
                console.log(response.data);
                 $scope.scoreList =response.data;
 
-                $scope.scoreList.sort(function(a, b) {
-                    return parseFloat(a.totalScore) - parseFloat(b.totalScore);
+               $scope.scoreList=  $scope.scoreList.sort(function(a, b) {
+                    return parseInt(b.totalScore) - parseInt(a.totalScore);
                 });
 
-                $scope.scoreList[12].currentSeasonScore = 565;
-                $scope.scoreList[13].currentSeasonScore = 67;
+                for(var i = 0;i<$scope.scoreList.length;i++)
+                {
+                    //give the user's their rank
+                    $scope.scoreList[i].rank = (i+1);
+                }
+
 
 
         });
