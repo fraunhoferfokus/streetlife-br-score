@@ -1,0 +1,38 @@
+body{
+    font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial !important;
+    background: white;
+    color: black;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #FFEB3B;
+
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #FFEB3B;
+    background-color: transparent;
+}
+.floating-label-form-group-with-focus label {
+    color: #FFEB3B;
+}
+header
+{
+    background:  white;
+}
+
+a, a:hover, a:focus, a:active, a.active {
+    outline: 0;
+    color:  #FFEB3B;
+}
+
+.footer-below
+{
+    background-color: #12C700;
+}
+footer .footer-below {
+    padding: 25px 0;
+    background-color: #12C700;
+}
+footer .footer-above {
+    padding: 25px 0;
+    background-color: white;
+}

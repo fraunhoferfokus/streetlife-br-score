@@ -468,6 +468,13 @@ footer .facebook {
 {
     background-color: white;
 }
+
+.navbar-green
+{
+    background-color: #12C700;
+}
+
+
 .navbar-default .navbar-nav>li>a {
     color: #808080;
 }

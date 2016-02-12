@@ -12,6 +12,7 @@ $( document ).ready(function() {
 });
 
 var FACEBOOK_APP_ID = '927583730682087';
+var URL_BACKEND = "http://10.147.67.75:8080/api-rest/facebook/saveaccesstoken";
 var shortTermAccessToken;
 var deviceId;
 
@@ -48,10 +49,11 @@ function getQueryVariable(variable) {
     console.log(deviceId);
 
     $.get(
-        "http://10.147.67.75:8080/api-rest/facebook/saveaccesstoken",
+        URL_BACKEND,
         {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
         function(data) {
-            alert('page content: ' + data);
+            console.log("Message from Backend:");
+            console.log(data);
         }
     );
 
