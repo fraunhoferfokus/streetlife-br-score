@@ -499,12 +499,12 @@ footer .facebook {
 
 @media (max-width: 623px) {
     .score {
-        font-size: 13px;
+        font-size: 12px;
     }
 }
 @media (min-width: 724px) {
     .score {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 @media (min-width: 702px) {
