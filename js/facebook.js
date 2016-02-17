@@ -41,7 +41,7 @@ function successfullyConnected(response)
     console.log("streetlife app deviceId: ");
     console.log(deviceId);
 
-    $.get(
+    $.post(
         URL_BACKEND,
         {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
         function(data) {

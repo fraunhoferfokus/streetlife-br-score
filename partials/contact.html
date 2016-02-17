@@ -1,0 +1,58 @@
+<section id="content" class="sectionContent">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Contact</h2>
+                <hr class="star-primary">
+
+            </div>
+
+
+     <div ng-show="showContactForm" id="showContactForm">
+    <form id="contactForm" class="form-horizontal" role="form" method="get" action="">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="name" class="form-control" id="nameId" name="name" placeholder="Vorname und Nachname" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="emailInput" class="form-control" id="emailId" name="email"  placeholder="beispiel@domain.com" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Nachricht</label>
+            <div class="col-sm-10">
+                <textarea id="messageId" ng-model="message" class="form-control" rows="4" name="message"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <input id="submit" name="submit" type="button" ng-click="sendContact()" value="Senden" class="btn btn-primary">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <! Will be used to display an alert to the user>
+            </div>
+        </div>
+    </form>
+     </div>
+            <div ng-show="showMessageSend" id="messageSend">
+                <center>
+                <div class="row">
+                <p>Ihre Nachricht wurde erfolgreich versendet!</p>
+                    <br>
+                    <br>
+                    </div>
+                </center>
+
+            </div>
+
+
+
+
+</section>
