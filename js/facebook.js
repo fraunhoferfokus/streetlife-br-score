@@ -48,7 +48,7 @@ function successfullyConnected(response)
         type: 'post',
         data: {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/json"
 
         },
         dataType: 'json',
