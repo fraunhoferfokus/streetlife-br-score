@@ -33,17 +33,25 @@ angular.module('scoreApp', ['ngRoute'])
             data.messagesubject = subject;
             data.messagebody = "Email: "+email +" " + message;
 
+
+            var dataString = "sendername="+encodeURIComponent(data.sendername)+"&messagesubject="+encodeURIComponent(data.messagesubject)+"&messagebody="+encodeURIComponent(data.messagebody);
+            console.log(dataString);
             // Simple GET request example:
             $http({
                 method: 'POST',
-                url: 'http://193.175.133.251/fb/sendfeedbackemail',
-                data: data
+                url: '../fb/sendfeedbackemail',
+                data: dataString,
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                }
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
+                console.log(response);
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
+                console.log(response);
             });
         }
 
