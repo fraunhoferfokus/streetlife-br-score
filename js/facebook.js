@@ -40,15 +40,22 @@ function successfullyConnected(response)
     console.log(shortTermAccessToken);
     console.log("streetlife app deviceId: ");
     console.log(deviceId);
+    console.log(deviceId);
 
-    $.post(
-        URL_BACKEND,
-        {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
-        function(data) {
-            console.log("Message from Backend:");
-            console.log(data);
+
+    $.ajax({
+        url: URL_BACKEND,
+        type: 'post',
+        data: {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.info(data);
         }
-    );
+    });
 
     FB.api(
         '/me',
