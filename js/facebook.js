@@ -31,7 +31,7 @@ function successfullyConnected(response)
 
     shortTermAccessToken = response.authResponse.accessToken;
     deviceId = getQueryVariable("deviceId");
-    userId = response.authResponse.userID;
+    var userId = response.authResponse.userID;
 
     console.log("the following data, will be send to Streetlife Backend");
     console.log("userId:");
@@ -43,15 +43,18 @@ function successfullyConnected(response)
     console.log(deviceId);
 
 
+
+    var dataString = "deviceid="+encodeURIComponent(deviceId)+"&fb_userid="+encodeURIComponent(userId)+"&fb_shortaccesstoken="+encodeURIComponent(shortTermAccessToken);
+
+
     $.ajax({
         url: URL_BACKEND,
         type: 'post',
-        data: {"deviceid" : deviceId, "fb_userid" : userId,"fb_shortaccesstoken":shortTermAccessToken},
+        data: dataString,
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/x-www-form-urlencoded"
 
         },
-        dataType: 'json',
         success: function (data) {
             console.info(data);
         }
