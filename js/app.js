@@ -36,7 +36,7 @@ angular.module('scoreApp', ['ngRoute'])
             // Simple GET request example:
             $http({
                 method: 'POST',
-                url: '../sendfeedbackemail',
+                url: 'http://193.175.133.251/fb/sendfeedbackemail',
                 data: data
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
