@@ -32,10 +32,10 @@ angular.module('scoreApp', ['ngRoute'])
             var data = {};
             data.sendername = name;
             data.messagesubject = subject;
-            data.messagebody = "Email: "+email +" " + message;
-
-
-            var dataString = "sendername="+encodeURIComponent(data.sendername)+"&messagesubject="+encodeURIComponent(data.messagesubject)+"&messagebody="+encodeURIComponent(data.messagebody);
+            data.messagebody =  message;
+            data.email = email;
+            
+            var dataString = "sendername="+encodeURIComponent(data.sendername)+"&messagesubject="+encodeURIComponent(data.messagesubject)+"&messagebody="+encodeURIComponent(data.messagebody)+"&email="+encodeURIComponent(data.email)
           //  console.log(dataString);
             // Simple GET request example:
             $http({
