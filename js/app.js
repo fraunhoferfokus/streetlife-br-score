@@ -23,9 +23,10 @@ angular.module('scoreApp', ['ngRoute'])
 
         $scope.showMessageSend = false;
         $scope.showContactForm = true;
+        $scope.showMessageSendError = false;
 
 
-        var  sendContactToBackend = function(email,name,subject,message)
+        $scope.sendContactToBackend = function(email,name,subject,message)
         {
 
             var data = {};
@@ -35,7 +36,7 @@ angular.module('scoreApp', ['ngRoute'])
 
 
             var dataString = "sendername="+encodeURIComponent(data.sendername)+"&messagesubject="+encodeURIComponent(data.messagesubject)+"&messagebody="+encodeURIComponent(data.messagebody);
-            console.log(dataString);
+          //  console.log(dataString);
             // Simple GET request example:
             $http({
                 method: 'POST',
@@ -47,11 +48,15 @@ angular.module('scoreApp', ['ngRoute'])
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
-                console.log(response);
+               // console.log(response);
+                $scope.showMessageSend = true;
+                $scope.showContactForm = false;
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
-                console.log(response);
+               // console.log(response);
+                $scope.showMessageSendError = true;
+                $scope.showContactForm = false;
             });
         }
 
@@ -66,10 +71,9 @@ angular.module('scoreApp', ['ngRoute'])
             var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
 
             if($scope.name != "" && filter.test(email) == true != "" && $scope.message != "") {
-                $scope.showMessageSend = true;
-                $scope.showContactForm = false;
 
-                sendContactToBackend($scope.emailInput,$scope.name,"Streetlife Score Contact " +$scope.name,$scope.message);
+
+                $scope.sendContactToBackend($scope.emailInput,$scope.name,"Streetlife Score Contact " +$scope.name,$scope.message);
             }
 
             //highlight missing part
@@ -105,8 +109,7 @@ angular.module('scoreApp', ['ngRoute'])
 
         }
 
-     //   var scoreWebserviceUrl = "../scores/getall";
-        var scoreWebserviceUrl = "http://193.175.133.251/scores/getall";
+        var scoreWebserviceUrl = "../scores/getall";
 
         $http.get(scoreWebserviceUrl)
             .then(function(response) {
