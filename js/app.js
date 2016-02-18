@@ -76,6 +76,7 @@ angular.module('scoreApp', ['ngRoute'])
                 $scope.sendContactToBackend($scope.emailInput,$scope.name,"Streetlife Score Contact " +$scope.name,$scope.message);
             }
 
+
             //highlight missing part
             if($scope.name == "")
             {
