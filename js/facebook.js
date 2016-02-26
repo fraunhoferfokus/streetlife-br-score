@@ -73,7 +73,7 @@ function successfullyConnected(response)
             $('#loggedIn').css("display","inline");
             var name = response.name.split(" ")[0];
 
-           $('#loggedInText').prepend("<center><p>Hallo "+name+",<br> Deine Facebookdaten wurden anonymisiert an die Streetlife Plattform weitergeleitet.</center>");
+           $('#loggedInText').prepend("<center><p>Hallo "+name+",<br> Deine Facebookdaten wurden<br> anonymisiert an die <br>Streetlife Plattform weitergeleitet.</center>");
 
         }
     );
